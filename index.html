@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
 <style>
-#mist26{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:860px;margin:0 auto;padding:0 16px}
+#mist26{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:900px;margin:0 auto;padding:0 16px}
 #mist26 *{box-sizing:border-box;margin:0;padding:0}
 #mist26 .hdr{padding:1.25rem 0 1rem;border-bottom:1px solid #e5e5e5;margin-bottom:1.25rem}
 #mist26 .logo-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -20,6 +20,7 @@
 #mist26 .day-btn.active{background:#8b1a1a;color:#fff;border-color:#8b1a1a}
 #mist26 .day-btn.today{border-color:#8b1a1a;color:#8b1a1a;font-weight:600}
 #mist26 .day-btn.today.active{background:#8b1a1a;color:#fff}
+/* Program timeline */
 #mist26 .timeline{position:relative;padding-left:0}
 #mist26 .tl-row{display:grid;grid-template-columns:70px 18px 1fr;gap:0 12px;align-items:start;padding:10px 0;position:relative}
 #mist26 .tl-row:not(:last-child)::after{content:'';position:absolute;left:79px;top:28px;bottom:-10px;width:2px;background:#f0f0f0;z-index:0}
@@ -34,15 +35,12 @@
 #mist26 .tl-dot i{font-size:10px;color:#fff}
 #mist26 .tl-body{padding-bottom:4px}
 #mist26 .tl-title{font-size:13px;font-weight:600;color:#111;margin-bottom:1px;line-height:1.3}
-#mist26 .tl-title.highlight-orange{color:#e8a020}
-#mist26 .tl-title.highlight-blue{color:#4a90d9}
-#mist26 .tl-title.highlight-red{color:#8b1a1a}
+#mist26 .tl-title.hl-orange{color:#e8a020}
+#mist26 .tl-title.hl-blue{color:#1a6bc4}
+#mist26 .tl-title.hl-red{color:#8b1a1a}
 #mist26 .tl-sub{font-size:11px;color:#999}
-#mist26 .tl-row.past .tl-time{color:#ccc}
-#mist26 .tl-row.past .tl-title{color:#bbb}
-#mist26 .tl-row.past .tl-sub{color:#ddd}
+#mist26 .tl-row.past .tl-time,#mist26 .tl-row.past .tl-title,#mist26 .tl-row.past .tl-sub{color:#ccc}
 #mist26 .tl-row.past .tl-dot{opacity:0.3}
-#mist26 .tl-row.past::after{background:#f7f7f7}
 #mist26 .tl-row.current .tl-title{color:#8b1a1a}
 #mist26 .now-pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:99px;background:#fff0f0;color:#8b1a1a;font-weight:600;margin-bottom:4px;border:1px solid #f0d0d0}
 #mist26 .now-dot{width:5px;height:5px;border-radius:50%;background:#e24b4a;animation:mist-nowpulse 1.2s infinite}
@@ -52,28 +50,37 @@
 #mist26 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
 #mist26 .leg{display:flex;align-items:center;gap:4px;font-size:11px;color:#666}
 #mist26 .leg-dot{width:8px;height:8px;border-radius:50%}
-#mist26 .match-card{border:1px solid #eee;border-radius:10px;padding:10px 14px;margin-bottom:7px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px}
-#mist26 .match-card.live{border-left:3px solid #e24b4a}
-#mist26 .match-card.done{opacity:0.55}
+/* Schedule */
+#mist26 .sport-filter{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+#mist26 .sport-btn{padding:5px 14px;font-size:12px;border:1px solid #ccc;border-radius:20px;background:#fff;cursor:pointer;color:#666;font-family:inherit}
+#mist26 .sport-btn.active{border-color:#8b1a1a;color:#8b1a1a;font-weight:600;background:#fff0f0}
+#mist26 .court-group{margin-bottom:1.5rem}
+#mist26 .court-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin:14px 0 8px;display:flex;align-items:center;gap:6px}
+#mist26 .court-label::after{content:'';flex:1;height:1px;background:#f0f0f0}
+#mist26 .match-card{border:1px solid #eee;border-radius:10px;padding:10px 14px;margin-bottom:7px;display:grid;grid-template-columns:60px 1fr auto 1fr;align-items:center;gap:8px}
+#mist26 .match-card.live{border-color:#e24b4a;border-left:3px solid #e24b4a;background:#fffafa}
+#mist26 .match-card.done{opacity:0.6}
+#mist26 .match-time{font-size:11px;color:#aaa;white-space:nowrap}
 #mist26 .t-name{font-size:13px;font-weight:600;color:#111}
-#mist26 .t-sub{font-size:11px;color:#888}
-#mist26 .vs-c{text-align:center}
-#mist26 .vs-score{font-size:15px;font-weight:600;color:#111}
-#mist26 .vs-time{font-size:11px;color:#888}
-#mist26 .sbadge{font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600}
+#mist26 .t-right{text-align:right}
+#mist26 .t-right .t-name{text-align:right}
+#mist26 .vs-c{text-align:center;min-width:70px}
+#mist26 .vs-score{font-size:16px;font-weight:700;color:#111;letter-spacing:1px}
+#mist26 .vs-dash{font-size:13px;color:#ccc}
+#mist26 .sbadge{font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600;display:block;margin-top:3px}
 #mist26 .s-live{background:#fcebeb;color:#a32d2d}
 #mist26 .s-done{background:#eaf3de;color:#3b6d11}
 #mist26 .s-up{background:#f5f5f5;color:#888}
-#mist26 .t-right{text-align:right}
-#mist26 .court-lbl{font-size:10px;color:#bbb;text-align:center;margin-top:2px}
-#mist26 .vlabel{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin:14px 0 6px;display:flex;align-items:center;gap:6px}
-#mist26 .vlabel::after{content:'';flex:1;height:1px;background:#f0f0f0}
+#mist26 .loading{text-align:center;padding:2rem;color:#aaa;font-size:13px}
+#mist26 .refresh-bar{font-size:11px;color:#aaa;text-align:right;margin-bottom:8px;display:flex;align-items:center;justify-content:flex-end;gap:6px}
+#mist26 .refresh-dot{width:6px;height:6px;border-radius:50%;background:#5daa72;display:inline-block}
+#mist26 .refresh-dot.syncing{background:#e8b84b;animation:mist-pulse 0.8s infinite}
+/* Venues */
 #mist26 .venue-card{border:1px solid #eee;border-radius:10px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
 #mist26 .venue-icon{width:36px;height:36px;border-radius:50%;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:18px;color:#888}
 #mist26 .venue-name{font-size:14px;font-weight:600;color:#111;margin-bottom:2px}
 #mist26 .venue-addr{font-size:11px;color:#888;margin-bottom:4px}
 #mist26 .venue-dir{font-size:11px;color:#4a90d9;text-decoration:none;display:inline-flex;align-items:center;gap:3px}
-#mist26 .empty{text-align:center;padding:2rem;color:#bbb;font-size:13px}
 </style>
 
 <div id="mist26">
@@ -97,6 +104,7 @@
     <button class="tab" onclick="m26tab('venues',this)">Venues</button>
   </div>
 
+  <!-- PROGRAM -->
   <div id="m26-program">
     <div class="day-tabs" id="m26-pdaytabs">
       <button class="day-btn" onclick="m26pday(0,this)">Fri May 22</button>
@@ -117,239 +125,246 @@
     <div id="m26-progbody" class="timeline"></div>
   </div>
 
+  <!-- SCHEDULE -->
   <div id="m26-schedule" style="display:none">
-    <div class="day-tabs">
-      <button class="day-btn active" onclick="m26sday(0,this)">Fri May 22</button>
-      <button class="day-btn" onclick="m26sday(1,this)">Sat May 23</button>
-      <button class="day-btn" onclick="m26sday(2,this)">Sun May 24</button>
+    <div class="refresh-bar">
+      <span class="refresh-dot" id="m26-rdot"></span>
+      <span id="m26-refresh-txt">Loading scores...</span>
     </div>
-    <div id="m26-schedbody"></div>
+    <div class="day-tabs">
+      <button class="day-btn active" onclick="m26sday('Saturday',this)">Sat May 23</button>
+      <button class="day-btn" onclick="m26sday('Sunday',this)">Sun May 24</button>
+    </div>
+    <div class="sport-filter">
+      <button class="sport-btn active" onclick="m26sport('All',this)">All Sports</button>
+      <button class="sport-btn" onclick="m26sport('Basketball',this)">🏀 Basketball</button>
+      <button class="sport-btn" onclick="m26sport('Soccer',this)">⚽ Soccer</button>
+      <button class="sport-btn" onclick="m26sport('Volleyball',this)">🏐 Volleyball</button>
+    </div>
+    <div id="m26-schedbody"><div class="loading">Loading schedule from Google Sheets...</div></div>
   </div>
 
+  <!-- VENUES -->
   <div id="m26-venues" style="display:none">
     <div id="m26-venuesbody"></div>
   </div>
 </div>
 
 <script type="text/javascript">
-function m26Start() {
-  if (window._m26done) return;
-  window._m26done = true;
+var SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6mIdS5jHb-BYzX5rLaweB0bb3HSZvl88-GczIZZBQoRossy7BdwBL9GzOMi3Jm0SbU4w-ai_FL9Y1/pub?gid=2136730681&single=true&output=csv";
+var REFRESH_INTERVAL = 60000; // 60 seconds
 
-  var DATES = ['2026-05-22','2026-05-23','2026-05-24'];
+var DATES = ['2026-05-22','2026-05-23','2026-05-24'];
+var IC = {prayer:'ti-building-mosque',food:'ti-tools-kitchen-2',sports:'ti-ball-basketball',program:'ti-speakerphone',logistics:'ti-bus',social:'ti-campfire'};
 
-  var IC = {prayer:'ti-building-mosque',food:'ti-tools-kitchen-2',sports:'ti-ball-basketball',program:'ti-speakerphone',logistics:'ti-bus',social:'ti-campfire'};
+var PD = [
+  [{t:'5:00 am',s:300,d:30,title:'Fajr Salat & Dars',cat:'prayer'},{t:'8:30 am',s:510,d:90,title:'Breakfast',cat:'food'},{t:'1:00 pm',s:780,d:90,title:'Jummah Prayers',cat:'prayer',loc:'Mubarak Mosque'},{t:'2:30 pm',s:870,d:60,title:'Lunch',cat:'food'},{t:'3:30 pm',s:930,d:240,title:'Off-Site Activity',cat:'social',loc:'Washington DC'},{t:'7:30 pm',s:1170,d:60,title:'Dinner',cat:'food'},{t:'8:30 pm',s:1230,d:15,title:'Maghrib Salat',cat:'prayer'},{t:'8:45 pm',s:1245,d:45,title:'Bonfire',cat:'social'},{t:'9:30 pm',s:1290,d:30,title:'Isha Salat',cat:'prayer'},{t:'10:30 pm',s:1350,d:0,title:'Lights Out',cat:'logistics'}],
+  [{t:'5:00 am',s:300,d:30,title:'Salat ul Fajr & Dars',cat:'prayer'},{t:'8:00 am',s:480,d:60,title:'Breakfast & Registration',cat:'food',loc:'Patriot HS'},{t:'9:00 am',s:540,d:60,title:'Opening Session',cat:'program',loc:'Patriot HS',hl:'orange'},{t:'10:00 am',s:600,d:165,title:'Sports - Block 1',cat:'sports',loc:'PHS Gym + Field',hl:'blue'},{t:'11:00 am',s:660,d:180,title:'Running Lunch',cat:'food',loc:'PHS Cafeteria'},{t:'2:45 pm',s:885,d:30,title:'Zuhr & Asr Salat',cat:'prayer',loc:'Patriot HS'},{t:'3:15 pm',s:915,d:225,title:'Sports - Block 2',cat:'sports',loc:'PHS Gym + Field',hl:'blue'},{t:'7:00 pm',s:1140,d:90,title:'Dinner',cat:'food',loc:'Mubarak Mosque'},{t:'8:30 pm',s:1230,d:15,title:'Maghrib & Isha Salat',cat:'prayer',loc:'Mubarak Mosque'},{t:'8:45 pm',s:1245,d:75,title:'Khilafat Day Program',cat:'program',loc:'Mubarak Mosque',hl:'orange'},{t:'10:00 pm',s:1320,d:60,title:'Bonfire / Cafe',cat:'social',loc:'Mubarak Mosque'}],
+  [{t:'5:00 am',s:300,d:30,title:'Fajr Salat & Dars',cat:'prayer'},{t:'7:00 am',s:420,d:60,title:'Breakfast',cat:'food',loc:'Patriot HS'},{t:'8:00 am',s:480,d:180,title:'Sports - Block 3',cat:'sports',loc:'Patriot HS',hl:'blue'},{t:'11:00 am',s:660,d:195,title:'Running Lunch',cat:'food',loc:'PHS Cafeteria'},{t:'2:15 pm',s:855,d:45,title:'Zuhr & Asr Salat',cat:'prayer',loc:'Patriot HS'},{t:'3:00 pm',s:900,d:180,title:'Finals Sports Block',cat:'sports',loc:'Patriot HS',hl:'red'},{t:'6:00 pm',s:1080,d:40,title:'Rolling Dinner',cat:'food',loc:'Patriot HS'},{t:'6:40 pm',s:1120,d:185,title:'Closing Session',cat:'program',loc:'Patriot HS',hl:'orange'},{t:'9:45 pm',s:1305,d:30,title:'Maghrib & Isha Salat',cat:'prayer'}]
+];
 
-  /* ── PROGRAM DATA from official PDF ──
-     s = start in minutes from midnight, d = duration in minutes */
-  var PD = [
-    /* FRIDAY MAY 22 */
-    [
-      {t:'5:00 am', s:300,  d:30,  title:'Fajr Salat & Dars',       cat:'prayer'},
-      {t:'8:30 am', s:510,  d:90,  title:'Breakfast',                cat:'food'},
-      {t:'1:00 pm', s:780,  d:90,  title:'Jummah Prayers',           cat:'prayer', loc:'Mubarak Mosque'},
-      {t:'2:30 pm', s:870,  d:60,  title:'Lunch',                    cat:'food'},
-      {t:'3:30 pm', s:930,  d:240, title:'Off-Site Activity',         cat:'social', loc:'Washington DC', hl:''},
-      {t:'7:30 pm', s:1170, d:60,  title:'Dinner',                   cat:'food'},
-      {t:'8:30 pm', s:1230, d:15,  title:'Maghrib Salat',            cat:'prayer'},
-      {t:'8:45 pm', s:1245, d:45,  title:'Bonfire',                  cat:'social'},
-      {t:'9:30 pm', s:1290, d:30,  title:'Isha Salat',               cat:'prayer'},
-      {t:'10:30 pm',s:1350, d:0,   title:'Lights Out',               cat:'logistics'}
-    ],
-    /* SATURDAY MAY 23 */
-    [
-      {t:'5:00 am', s:300,  d:30,  title:'Salat ul Fajr & Dars',     cat:'prayer'},
-      {t:'8:00 am', s:480,  d:60,  title:'Breakfast & Registration', cat:'food', loc:'Patriot HS'},
-      {t:'9:00 am', s:540,  d:60,  title:'Opening Session',          cat:'program', loc:'Patriot HS', hl:'orange'},
-      {t:'10:00 am',s:600,  d:165, title:'Sports - Block 1',         cat:'sports', loc:'PHS Gym + Field', hl:'blue'},
-      {t:'11:00 am',s:660,  d:180, title:'Running Lunch',            cat:'food', loc:'PHS Cafeteria'},
-      {t:'2:45 pm', s:885,  d:30,  title:'Zuhr & Asr Salat',         cat:'prayer', loc:'Patriot HS'},
-      {t:'3:15 pm', s:915,  d:225, title:'Sports - Block 2',         cat:'sports', loc:'PHS Gym + Field', hl:'blue'},
-      {t:'7:00 pm', s:1140, d:90,  title:'Dinner',                   cat:'food', loc:'Mubarak Mosque'},
-      {t:'8:30 pm', s:1230, d:15,  title:'Maghrib & Isha Salat',     cat:'prayer', loc:'Mubarak Mosque'},
-      {t:'8:45 pm', s:1245, d:75,  title:'Khilafat Day Program',     cat:'program', loc:'Mubarak Mosque', hl:'orange'},
-      {t:'10:00 pm',s:1320, d:60,  title:'Bonfire / Cafe',           cat:'social', loc:'Mubarak Mosque'}
-    ],
-    /* SUNDAY MAY 24 */
-    [
-      {t:'5:00 am', s:300,  d:30,  title:'Fajr Salat & Dars',        cat:'prayer'},
-      {t:'7:00 am', s:420,  d:60,  title:'Breakfast',                cat:'food', loc:'Patriot HS'},
-      {t:'8:00 am', s:480,  d:180, title:'Sports - Block 3',         cat:'sports', loc:'Patriot HS', hl:'blue'},
-      {t:'11:00 am',s:660,  d:195, title:'Running Lunch',            cat:'food', loc:'PHS Cafeteria'},
-      {t:'2:15 pm', s:855,  d:45,  title:'Zuhr & Asr Salat',         cat:'prayer', loc:'Patriot HS'},
-      {t:'3:00 pm', s:900,  d:180, title:'Finals Sports Block',      cat:'sports', loc:'Patriot HS', hl:'red'},
-      {t:'6:00 pm', s:1080, d:40,  title:'Rolling Dinner',           cat:'food', loc:'Patriot HS'},
-      {t:'6:40 pm', s:1120, d:185, title:'Closing Session',          cat:'program', loc:'Patriot HS', hl:'orange'},
-      {t:'9:45 pm', s:1305, d:30,  title:'Maghrib & Isha Salat',     cat:'prayer'}
-    ]
-  ];
+var VD = [
+  {name:'Mubarak Mosque',addr:'4555 Ahmadiyya Dr, Chantilly, VA 20151',use:'Accommodation, meals, prayers, Khilafat Day, bonfire',icon:'ti-building-mosque',maps:'https://maps.google.com/?q=4555+Ahmadiyya+Dr+Chantilly+VA'},
+  {name:'Patriot High School',addr:'10504 Kettle Run Rd, Nokesville, VA',use:'All sports (Basketball + Soccer), opening & closing sessions',icon:'ti-ball-basketball',maps:'https://maps.google.com/?q=10504+Kettle+Run+Rd+Nokesville+VA'},
+  {name:'Rocky Run Middle School',addr:'4700 Stringfellow Rd, Chantilly, VA',use:'Volleyball courts',icon:'ti-ball-volleyball',maps:'https://maps.google.com/?q=4700+Stringfellow+Rd+Chantilly+VA'},
+  {name:'Masroor Mosque',addr:'5640 Hoadly Rd, Manassas, VA',use:'Additional venue',icon:'ti-building-mosque',maps:'https://maps.google.com/?q=5640+Hoadly+Rd+Manassas+VA'}
+];
 
-  /* ── MATCH SCHEDULE — update on game day ──
-     To update a score: change status to 'live' or 'done', add sA and sB */
-  var SD = [
-    [{label:'Setup Day - No Matches',matches:[]}],
-    [
-      {label:'Basketball',icon:'ti-ball-basketball',matches:[
-        {t:'10:00 am',tA:'TBD',rA:'Group A',tB:'TBD',rB:'Group B',status:'upcoming',court:'Court 1'},
-        {t:'10:00 am',tA:'TBD',rA:'Group C',tB:'TBD',rB:'Group D',status:'upcoming',court:'Court 2'},
-        {t:'3:15 pm', tA:'TBD',rA:'Block 2', tB:'TBD',rB:'Block 2', status:'upcoming',court:'Court 1'}
-      ]},
-      {label:'Soccer',icon:'ti-ball-football',matches:[
-        {t:'10:00 am',tA:'TBD',rA:'Group A',tB:'TBD',rB:'Group B',status:'upcoming',court:'Field'},
-        {t:'3:15 pm', tA:'TBD',rA:'Block 2', tB:'TBD',rB:'Block 2', status:'upcoming',court:'Field'}
-      ]},
-      {label:'Volleyball',icon:'ti-ball-volleyball',matches:[
-        {t:'10:00 am',tA:'TBD',rA:'Group A',tB:'TBD',rB:'Group B',status:'upcoming',court:'Court 3'},
-        {t:'3:15 pm', tA:'TBD',rA:'Block 2', tB:'TBD',rB:'Block 2', status:'upcoming',court:'Court 3'}
-      ]}
-    ],
-    [
-      {label:'Basketball Finals',icon:'ti-ball-basketball',matches:[
-        {t:'3:00 pm',tA:'TBD',rA:'Seed 1',tB:'TBD',rB:'Seed 4',status:'upcoming',court:'Court 1'},
-        {t:'3:00 pm',tA:'TBD',rA:'Seed 2',tB:'TBD',rB:'Seed 3',status:'upcoming',court:'Court 2'}
-      ]},
-      {label:'Soccer Finals',icon:'ti-ball-football',matches:[
-        {t:'3:00 pm',tA:'TBD',rA:'Winner SF1',tB:'TBD',rB:'Winner SF2',status:'upcoming',court:'Field'}
-      ]},
-      {label:'Volleyball Finals',icon:'ti-ball-volleyball',matches:[
-        {t:'3:00 pm',tA:'TBD',rA:'Winner SF1',tB:'TBD',rB:'Winner SF2',status:'upcoming',court:'Court 3'}
-      ]}
-    ]
-  ];
+var pDay=0, schedDay='Saturday', schedSport='All', pManual=false;
+var allGames=[];
 
-  var VD = [
-    {name:'Mubarak Mosque',addr:'4555 Ahmadiyya Dr, Chantilly, VA 20151',use:'Accommodation, meals, prayers, Khilafat Day, bonfire',icon:'ti-building-mosque',maps:'https://maps.google.com/?q=4555+Ahmadiyya+Dr+Chantilly+VA'},
-    {name:'Patriot High School',addr:'10504 Kettle Run Rd, Nokesville, VA',use:'All sports, opening & closing sessions, meals on Sat & Sun',icon:'ti-ball-basketball',maps:'https://maps.google.com/?q=10504+Kettle+Run+Rd+Nokesville+VA'},
-    {name:'Masroor Mosque',addr:'5640 Hoadly Rd, Manassas, VA',use:'Additional venue',icon:'ti-building-mosque',maps:'https://maps.google.com/?q=5640+Hoadly+Rd+Manassas+VA'}
-  ];
+function pad(n){return String(n).padStart(2,'0');}
+function fmtTime(d){var h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+pad(m)+' '+ap;}
+function todayIdx(){var n=new Date(),str=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate());return DATES.indexOf(str);}
+function nowMin(){var n=new Date();return n.getHours()*60+n.getMinutes();}
+function durLbl(d){if(!d||d>=1440)return'';return d>=60?(Math.floor(d/60)+'h'+(d%60?' '+d%60+'m':'')):(d+'m');}
 
-  var pDay=0, sDay=0, pManual=false;
+function updateClock(){
+  var n=new Date();
+  var c=document.getElementById('m26-clock'),dy=document.getElementById('m26-day');
+  if(c)c.textContent=fmtTime(n);
+  if(dy)dy.textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+}
 
-  function pad(n){return String(n).padStart(2,'0');}
-  function fmtTime(d){var h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+pad(m)+' '+ap;}
-  function todayIdx(){var n=new Date(),str=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate());return DATES.indexOf(str);}
-  function nowMin(){var n=new Date();return n.getHours()*60+n.getMinutes();}
-  function durLbl(d){if(!d||d>=1440)return'';return d>=60?(Math.floor(d/60)+'h'+(d%60?' '+d%60+'m':'')):(d+'m');}
+window.m26tab=function(tab,el){
+  document.querySelectorAll('#mist26 .tab').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  document.getElementById('m26-program').style.display=tab==='program'?'':'none';
+  document.getElementById('m26-schedule').style.display=tab==='schedule'?'':'none';
+  document.getElementById('m26-venues').style.display=tab==='venues'?'':'none';
+  if(tab==='venues')renderV();
+  if(tab==='schedule'&&allGames.length===0)fetchSheet();
+};
 
-  function updateClock(){
-    var n=new Date();
-    var c=document.getElementById('m26-clock'),dy=document.getElementById('m26-day');
-    if(c)c.textContent=fmtTime(n);
-    if(dy)dy.textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+window.m26pday=function(d,el){
+  pDay=d;pManual=true;
+  document.querySelectorAll('#m26-pdaytabs .day-btn').forEach(function(b){b.classList.remove('active');});
+  el.classList.add('active');
+  renderP();
+};
+
+window.m26sday=function(day,el){
+  schedDay=day;
+  el.closest('.day-tabs').querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+  el.classList.add('active');
+  renderS();
+};
+
+window.m26sport=function(sport,el){
+  schedSport=sport;
+  document.querySelectorAll('#mist26 .sport-btn').forEach(function(b){b.classList.remove('active');});
+  el.classList.add('active');
+  renderS();
+};
+
+/* ── FETCH FROM GOOGLE SHEETS ── */
+function fetchSheet(){
+  var dot=document.getElementById('m26-rdot');
+  var txt=document.getElementById('m26-refresh-txt');
+  if(dot)dot.classList.add('syncing');
+  if(txt)txt.textContent='Syncing scores...';
+
+  fetch(SHEET_CSV+'&t='+Date.now())
+    .then(function(r){return r.text();})
+    .then(function(csv){
+      allGames=parseCSV(csv);
+      renderS();
+      if(dot)dot.classList.remove('syncing');
+      var now=new Date();
+      if(txt)txt.textContent='Updated '+fmtTime(now);
+    })
+    .catch(function(){
+      if(dot)dot.classList.remove('syncing');
+      if(txt)txt.textContent='Could not load - check connection';
+    });
+}
+
+function parseCSV(csv){
+  var lines=csv.split('\n');
+  var headers=lines[0].split(',').map(function(h){return h.trim().replace(/"/g,'');});
+  var rows=[];
+  for(var i=1;i<lines.length;i++){
+    if(!lines[i].trim())continue;
+    var vals=lines[i].split(',').map(function(v){return v.trim().replace(/"/g,'');});
+    var obj={};
+    headers.forEach(function(h,idx){obj[h]=vals[idx]||'';});
+    rows.push(obj);
+  }
+  return rows;
+}
+
+/* ── RENDER SCHEDULE ── */
+function renderS(){
+  var body=document.getElementById('m26-schedbody');
+  if(!body)return;
+  if(!allGames.length){body.innerHTML='<div class="loading">Loading schedule...</div>';return;}
+
+  var filtered=allGames.filter(function(g){
+    var dayMatch=g.day===schedDay;
+    var sportMatch=schedSport==='All'||g.sport===schedSport;
+    return dayMatch&&sportMatch;
+  });
+
+  if(!filtered.length){body.innerHTML='<div class="loading">No matches found</div>';return;}
+
+  /* group by sport then court */
+  var groups={};
+  filtered.forEach(function(g){
+    var key=g.sport+' - '+g.court;
+    if(!groups[key])groups[key]={sport:g.sport,court:g.court,games:[]};
+    groups[key].games.push(g);
+  });
+
+  var sportIcon={Basketball:'🏀',Soccer:'⚽',Volleyball:'🏐'};
+  var liveCount=filtered.filter(function(g){return g.status==='live';}).length;
+
+  var html='';
+  if(liveCount>0){
+    html+='<div style="font-size:12px;color:#a32d2d;background:#fcebeb;border-radius:8px;padding:8px 12px;margin-bottom:12px;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#e24b4a;display:inline-block;animation:mist-pulse 1.5s infinite"></span>'+liveCount+' game'+(liveCount>1?'s':'')+' live right now</div>';
   }
 
-  window.m26tab=function(tab,el){
-    document.querySelectorAll('#mist26 .tab').forEach(function(t){t.classList.remove('active');});
-    el.classList.add('active');
-    document.getElementById('m26-program').style.display=tab==='program'?'':'none';
-    document.getElementById('m26-schedule').style.display=tab==='schedule'?'':'none';
-    document.getElementById('m26-venues').style.display=tab==='venues'?'':'none';
-    if(tab==='venues')renderV();
-  };
-
-  window.m26pday=function(d,el){
-    pDay=d;pManual=true;
-    document.querySelectorAll('#m26-pdaytabs .day-btn').forEach(function(b){b.classList.remove('active');});
-    el.classList.add('active');
-    renderP();
-  };
-
-  window.m26sday=function(d,el){
-    sDay=d;
-    el.closest('.day-tabs').querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
-    el.classList.add('active');
-    renderS();
-  };
-
-  function renderP(){
-    var rows=PD[pDay]||[];
-    var ti=todayIdx(),isToday=(pDay===ti),nm=nowMin();
-    var curIdx=-1,nxtIdx=-1;
-    if(isToday){
-      for(var i=0;i<rows.length;i++){
-        if(rows[i].d>0&&nm>=rows[i].s&&nm<rows[i].s+rows[i].d){curIdx=i;break;}
-      }
-      if(curIdx===-1){for(var j=0;j<rows.length;j++){if(rows[j].s>nm){nxtIdx=j;break;}}}
-    }
-    var bar=document.getElementById('m26-nextbar'),btxt=document.getElementById('m26-nextbar-txt');
-    if(isToday&&curIdx!==-1&&curIdx+1<rows.length){
-      bar.style.display='flex';btxt.textContent='Up next: '+rows[curIdx+1].title+' at '+rows[curIdx+1].t;
-    } else if(isToday&&nxtIdx!==-1){
-      bar.style.display='flex';btxt.textContent='Up next: '+rows[nxtIdx].title+' at '+rows[nxtIdx].t;
-    } else {bar.style.display='none';}
-
-    var html=rows.map(function(r,i){
-      var past=isToday&&r.d>0&&nm>=r.s+r.d;
-      var curr=i===curIdx;
-      var rc='tl-row'+(past?' past':'')+(curr?' current':'');
-      var nb=curr?'<div class="now-pill"><span class="now-dot"></span>Happening now</div>':'';
-      var tc='tl-title'+(r.hl==='orange'?' highlight-orange':r.hl==='blue'?' highlight-blue':r.hl==='red'?' highlight-red':'');
-      var sub=r.loc?'<div class="tl-sub"><i class="ti ti-map-pin" style="font-size:10px;margin-right:2px" aria-hidden="true"></i>'+r.loc+'</div>':'';
-      return '<div class="'+rc+'">'
-        +'<div class="tl-time">'+r.t+'</div>'
-        +'<div class="tl-dot '+r.cat+'"><i class="ti '+IC[r.cat]+'" aria-hidden="true"></i></div>'
-        +'<div class="tl-body">'+nb+'<div class="'+tc+'">'+r.title+(r.d?'':' &mdash;')+'</div>'+sub+'</div>'
+  Object.keys(groups).sort().forEach(function(key){
+    var g=groups[key];
+    html+='<div class="court-group"><div class="court-label">'+sportIcon[g.sport]+' '+g.sport+' &mdash; '+g.court+'</div>';
+    g.games.forEach(function(m){
+      var hasScore=m.score_a!==''&&m.score_b!=='';
+      var status=m.status||'upcoming';
+      var scoreHTML=hasScore
+        ?'<div class="vs-score">'+m.score_a+' <span class="vs-dash">-</span> '+m.score_b+'</div>'
+        :'<div class="vs-dash" style="font-size:18px">vs</div>';
+      var badgeCls=status==='live'?'s-live':status==='done'?'s-done':'s-up';
+      var badgeTxt=status==='live'?'● LIVE':status==='done'?'Final':m.time;
+      html+='<div class="match-card '+status+'">'
+        +'<div class="match-time">'+m.time+'</div>'
+        +'<div><div class="t-name">'+m.team_a+'</div></div>'
+        +'<div class="vs-c">'+scoreHTML+'<span class="sbadge '+badgeCls+'">'+badgeTxt+'</span></div>'
+        +'<div class="t-right"><div class="t-name">'+m.team_b+'</div></div>'
       +'</div>';
-    }).join('');
+    });
+    html+='</div>';
+  });
+  body.innerHTML=html;
+}
 
-    var body=document.getElementById('m26-progbody');
-    if(body)body.innerHTML=html;
-    setTimeout(function(){var c=document.querySelector('#mist26 .tl-row.current');if(c)c.scrollIntoView({behavior:'smooth',block:'center'});},120);
+/* ── RENDER PROGRAM ── */
+function renderP(){
+  var rows=PD[pDay]||[];
+  var ti=todayIdx(),isToday=(pDay===ti),nm=nowMin();
+  var curIdx=-1,nxtIdx=-1;
+  if(isToday){
+    for(var i=0;i<rows.length;i++){if(rows[i].d>0&&nm>=rows[i].s&&nm<rows[i].s+rows[i].d){curIdx=i;break;}}
+    if(curIdx===-1){for(var j=0;j<rows.length;j++){if(rows[j].s>nm){nxtIdx=j;break;}}}
   }
+  var bar=document.getElementById('m26-nextbar'),btxt=document.getElementById('m26-nextbar-txt');
+  if(isToday&&curIdx!==-1&&curIdx+1<rows.length){bar.style.display='flex';btxt.textContent='Up next: '+rows[curIdx+1].title+' at '+rows[curIdx+1].t;}
+  else if(isToday&&nxtIdx!==-1){bar.style.display='flex';btxt.textContent='Up next: '+rows[nxtIdx].title+' at '+rows[nxtIdx].t;}
+  else{bar.style.display='none';}
 
-  function renderS(){
-    var groups=SD[sDay]||[];
-    var body=document.getElementById('m26-schedbody');
-    if(!body)return;
-    if(!groups.length||!groups[0].matches.length){
-      body.innerHTML='<div class="empty">No matches scheduled &mdash; setup and arrival day</div>';return;
-    }
-    body.innerHTML=groups.map(function(g){
-      return '<div class="vlabel"><i class="ti '+(g.icon||'ti-trophy')+'" aria-hidden="true"></i>'+g.label+'</div>'
-        +g.matches.map(function(m){
-          var sc=m.sA!=null?'<div class="vs-score">'+m.sA+' &ndash; '+m.sB+'</div>':'<div class="vs-time">'+m.t+'</div>';
-          var bc=m.status==='live'?'s-live':m.status==='done'?'s-done':'s-up';
-          var bt=m.status==='live'?'LIVE':m.status==='done'?'Final':m.t;
-          return '<div class="match-card '+m.status+'">'
-            +'<div><div class="t-name">'+m.tA+'</div><div class="t-sub">'+m.rA+'</div></div>'
-            +'<div class="vs-c">'+sc+'<span class="sbadge '+bc+'">'+bt+'</span><div class="court-lbl">'+m.court+'</div></div>'
-            +'<div class="t-right"><div class="t-name">'+m.tB+'</div><div class="t-sub">'+m.rB+'</div></div>'
-          +'</div>';
-        }).join('');
-    }).join('');
-  }
+  var html=rows.map(function(r,i){
+    var past=isToday&&r.d>0&&nm>=r.s+r.d;
+    var curr=i===curIdx;
+    var rc='tl-row'+(past?' past':'')+(curr?' current':'');
+    var nb=curr?'<div class="now-pill"><span class="now-dot"></span>Happening now</div>':'';
+    var tc='tl-title'+(r.hl==='orange'?' hl-orange':r.hl==='blue'?' hl-blue':r.hl==='red'?' hl-red':'');
+    var sub=r.loc?'<div class="tl-sub"><i class="ti ti-map-pin" style="font-size:10px;margin-right:2px" aria-hidden="true"></i>'+r.loc+'</div>':'';
+    return '<div class="'+rc+'"><div class="tl-time">'+r.t+'</div><div class="tl-dot '+r.cat+'"><i class="ti '+IC[r.cat]+'" aria-hidden="true"></i></div><div class="tl-body">'+nb+'<div class="'+tc+'">'+r.title+'</div>'+sub+'</div></div>';
+  }).join('');
+  var body=document.getElementById('m26-progbody');
+  if(body)body.innerHTML=html;
+  setTimeout(function(){var c=document.querySelector('#mist26 .tl-row.current');if(c)c.scrollIntoView({behavior:'smooth',block:'center'});},120);
+}
 
-  function renderV(){
-    var body=document.getElementById('m26-venuesbody');
-    if(!body)return;
-    body.innerHTML=VD.map(function(v){
-      return '<div class="venue-card">'
-        +'<div class="venue-icon"><i class="ti '+v.icon+'" aria-hidden="true"></i></div>'
-        +'<div><div class="venue-name">'+v.name+'</div>'
-        +'<div class="venue-addr">'+v.addr+'</div>'
-        +'<div class="venue-addr" style="margin-bottom:4px">'+v.use+'</div>'
-        +(v.maps?'<a href="'+v.maps+'" target="_blank" rel="noopener" class="venue-dir"><i class="ti ti-map" style="font-size:12px" aria-hidden="true"></i>Get directions</a>':'')
-        +'</div></div>';
-    }).join('');
-  }
+/* ── RENDER VENUES ── */
+function renderV(){
+  var body=document.getElementById('m26-venuesbody');
+  if(!body)return;
+  body.innerHTML=VD.map(function(v){
+    return '<div class="venue-card"><div class="venue-icon"><i class="ti '+v.icon+'" aria-hidden="true"></i></div><div><div class="venue-name">'+v.name+'</div><div class="venue-addr">'+v.addr+'</div><div class="venue-addr" style="margin-bottom:6px;color:#aaa">'+v.use+'</div>'+(v.maps?'<a href="'+v.maps+'" target="_blank" rel="noopener" class="venue-dir"><i class="ti ti-map" style="font-size:12px" aria-hidden="true"></i> Get directions</a>':'')+'</div></div>';
+  }).join('');
+}
 
-  function initDayTabs(){
-    var ti=todayIdx();
-    var btns=document.querySelectorAll('#m26-pdaytabs .day-btn');
-    btns.forEach(function(b,i){if(i===ti)b.classList.add('today');});
-    var start=ti>=0?ti:0;
-    if(!pManual){pDay=start;btns.forEach(function(b){b.classList.remove('active');});if(btns[start])btns[start].classList.add('active');}
-    else{if(btns[0])btns[0].classList.add('active');}
-  }
+/* ── INIT ── */
+function initDayTabs(){
+  var ti=todayIdx();
+  var btns=document.querySelectorAll('#m26-pdaytabs .day-btn');
+  btns.forEach(function(b,i){if(i===ti)b.classList.add('today');});
+  var start=ti>=0?ti:0;
+  if(!pManual){pDay=start;btns.forEach(function(b){b.classList.remove('active');});if(btns[start])btns[start].classList.add('active');}
+  else{if(btns[0])btns[0].classList.add('active');}
+}
 
-  function tick(){updateClock();renderP();}
-  initDayTabs();tick();
+function tick(){updateClock();renderP();}
+
+function m26Start(){
+  if(window._m26done)return;
+  window._m26done=true;
+  initDayTabs();
+  tick();
   setInterval(tick,60000);
+  fetchSheet();
+  setInterval(fetchSheet,REFRESH_INTERVAL);
 }
 
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',m26Start);
-} else {
-  m26Start();
-}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',m26Start);}
+else{m26Start();}
 </script>

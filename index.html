@@ -1,370 +1,732 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
-<style>
-#mist26{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:900px;margin:0 auto;padding:0 16px}
-#mist26 *{box-sizing:border-box;margin:0;padding:0}
-#mist26 .hdr{padding:1.25rem 0 1rem;border-bottom:1px solid #e5e5e5;margin-bottom:1.25rem}
-#mist26 .logo-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-#mist26 .logo-pill{background:#1a1a2e;color:#e8b84b;font-size:11px;font-weight:600;letter-spacing:1.5px;padding:6px 14px;border-radius:99px;flex-shrink:0}
-#mist26 .ttl{font-size:17px;font-weight:600;color:#111;line-height:1.3}
-#mist26 .sub{font-size:12px;color:#888;margin-top:2px}
-#mist26 .clock-badge{margin-left:auto;text-align:right;flex-shrink:0}
-#mist26 .clock-time{font-size:15px;font-weight:600;color:#111}
-#mist26 .clock-day{font-size:10px;color:#888}
-#mist26 .live-dot{width:7px;height:7px;border-radius:50%;background:#e24b4a;display:inline-block;animation:mist-pulse 1.5s infinite;margin-right:4px;vertical-align:middle}
-@keyframes mist-pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-#mist26 .tabs{display:flex;gap:2px;margin-bottom:1.25rem;border-bottom:1px solid #e5e5e5;overflow-x:auto}
-#mist26 .tab{padding:8px 14px;font-size:13px;cursor:pointer;color:#888;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-1px;font-family:inherit;white-space:nowrap}
-#mist26 .tab.active{color:#111;border-bottom-color:#8b1a1a;font-weight:600}
-#mist26 .day-tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
-#mist26 .day-btn{padding:6px 14px;font-size:12px;border:1px solid #ccc;border-radius:20px;background:#fff;cursor:pointer;color:#666;font-family:inherit;transition:all 0.2s}
-#mist26 .day-btn.active{background:#8b1a1a;color:#fff;border-color:#8b1a1a}
-#mist26 .day-btn.today{border-color:#8b1a1a;color:#8b1a1a;font-weight:600}
-#mist26 .day-btn.today.active{background:#8b1a1a;color:#fff}
-/* Program timeline */
-#mist26 .timeline{position:relative;padding-left:0}
-#mist26 .tl-row{display:grid;grid-template-columns:70px 18px 1fr;gap:0 12px;align-items:start;padding:10px 0;position:relative}
-#mist26 .tl-row:not(:last-child)::after{content:'';position:absolute;left:79px;top:28px;bottom:-10px;width:2px;background:#f0f0f0;z-index:0}
-#mist26 .tl-time{font-size:11px;color:#999;padding-top:4px;white-space:nowrap;text-align:right}
-#mist26 .tl-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;position:relative;z-index:1}
-#mist26 .tl-dot.prayer{background:#4a90d9}
-#mist26 .tl-dot.food{background:#5daa72}
-#mist26 .tl-dot.sports{background:#8b1a1a}
-#mist26 .tl-dot.program{background:#e8a020}
-#mist26 .tl-dot.logistics{background:#e07b3c}
-#mist26 .tl-dot.social{background:#888}
-#mist26 .tl-dot i{font-size:10px;color:#fff}
-#mist26 .tl-body{padding-bottom:4px}
-#mist26 .tl-title{font-size:13px;font-weight:600;color:#111;margin-bottom:1px;line-height:1.3}
-#mist26 .tl-title.hl-orange{color:#e8a020}
-#mist26 .tl-title.hl-blue{color:#1a6bc4}
-#mist26 .tl-title.hl-red{color:#8b1a1a}
-#mist26 .tl-sub{font-size:11px;color:#999}
-#mist26 .tl-row.past .tl-time,#mist26 .tl-row.past .tl-title,#mist26 .tl-row.past .tl-sub{color:#ccc}
-#mist26 .tl-row.past .tl-dot{opacity:0.3}
-#mist26 .tl-row.current .tl-title{color:#8b1a1a}
-#mist26 .now-pill{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:99px;background:#fff0f0;color:#8b1a1a;font-weight:600;margin-bottom:4px;border:1px solid #f0d0d0}
-#mist26 .now-dot{width:5px;height:5px;border-radius:50%;background:#e24b4a;animation:mist-nowpulse 1.2s infinite}
-@keyframes mist-nowpulse{0%,100%{opacity:1}50%{opacity:0.15}}
-#mist26 .next-bar{font-size:12px;color:#7a4a00;background:#fff8ec;border:1px solid #f0d89a;border-radius:8px;padding:8px 12px;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
-#mist26 .next-bar i{color:#e8b84b;font-size:15px;flex-shrink:0}
-#mist26 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem}
-#mist26 .leg{display:flex;align-items:center;gap:4px;font-size:11px;color:#666}
-#mist26 .leg-dot{width:8px;height:8px;border-radius:50%}
-/* Schedule */
-#mist26 .sport-filter{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
-#mist26 .sport-btn{padding:5px 14px;font-size:12px;border:1px solid #ccc;border-radius:20px;background:#fff;cursor:pointer;color:#666;font-family:inherit}
-#mist26 .sport-btn.active{border-color:#8b1a1a;color:#8b1a1a;font-weight:600;background:#fff0f0}
-#mist26 .court-group{margin-bottom:1.5rem}
-#mist26 .court-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin:14px 0 8px;display:flex;align-items:center;gap:6px}
-#mist26 .court-label::after{content:'';flex:1;height:1px;background:#f0f0f0}
-#mist26 .match-card{border:1px solid #eee;border-radius:10px;padding:10px 14px;margin-bottom:7px;display:grid;grid-template-columns:60px 1fr auto 1fr;align-items:center;gap:8px}
-#mist26 .match-card.live{border-color:#e24b4a;border-left:3px solid #e24b4a;background:#fffafa}
-#mist26 .match-card.done{opacity:0.6}
-#mist26 .match-time{font-size:11px;color:#aaa;white-space:nowrap}
-#mist26 .t-name{font-size:13px;font-weight:600;color:#111}
-#mist26 .t-right{text-align:right}
-#mist26 .t-right .t-name{text-align:right}
-#mist26 .vs-c{text-align:center;min-width:70px}
-#mist26 .vs-score{font-size:16px;font-weight:700;color:#111;letter-spacing:1px}
-#mist26 .vs-dash{font-size:13px;color:#ccc}
-#mist26 .sbadge{font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600;display:block;margin-top:3px}
-#mist26 .s-live{background:#fcebeb;color:#a32d2d}
-#mist26 .s-done{background:#eaf3de;color:#3b6d11}
-#mist26 .s-up{background:#f5f5f5;color:#888}
-#mist26 .loading{text-align:center;padding:2rem;color:#aaa;font-size:13px}
-#mist26 .refresh-bar{font-size:11px;color:#aaa;text-align:right;margin-bottom:8px;display:flex;align-items:center;justify-content:flex-end;gap:6px}
-#mist26 .refresh-dot{width:6px;height:6px;border-radius:50%;background:#5daa72;display:inline-block}
-#mist26 .refresh-dot.syncing{background:#e8b84b;animation:mist-pulse 0.8s infinite}
-/* Venues */
-#mist26 .venue-card{border:1px solid #eee;border-radius:10px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:36px 1fr;gap:12px;align-items:start}
-#mist26 .venue-icon{width:36px;height:36px;border-radius:50%;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:18px;color:#888}
-#mist26 .venue-name{font-size:14px;font-weight:600;color:#111;margin-bottom:2px}
-#mist26 .venue-addr{font-size:11px;color:#888;margin-bottom:4px}
-#mist26 .venue-dir{font-size:11px;color:#4a90d9;text-decoration:none;display:inline-flex;align-items:center;gap:3px}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <title>Volleyball Tournament Bracket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0a0e1a',
+                            800: '#0d1321',
+                            700: '#111827',
+                            600: '#0f2744',
+                            500: '#1a2d4a',
+                        },
+                        gold: {
+                            DEFAULT: '#ffd700',
+                            dark: '#b8960f',
+                            light: '#ffe44d',
+                            muted: 'rgba(255, 215, 0, 0.15)',
+                        },
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap');
 
-<div id="mist26">
-  <div class="hdr">
-    <div class="logo-row">
-      <div class="logo-pill">MIST 2026</div>
-      <div>
-        <div class="ttl">Masroor International Sports Tournament</div>
-        <div class="sub"><span class="live-dot"></span>Live &middot; May 22&ndash;24 &middot; Northern Virginia</div>
-      </div>
-      <div class="clock-badge">
-        <div class="clock-time" id="m26-clock">--:-- --</div>
-        <div class="clock-day" id="m26-day">--</div>
-      </div>
-    </div>
-  </div>
+        :root {
+            --gold: #ffd700;
+            --gold-muted: rgba(255, 215, 0, 0.15);
+            --navy-900: #0a0e1a;
+            --navy-800: #0d1321;
+            --navy-700: #111827;
+            --navy-600: #0f2744;
+            --win-green: #4ade80;
+            --loss-orange: #fb923c;
+        }
 
-  <div class="tabs">
-    <button class="tab active" onclick="m26tab('program',this)">Program</button>
-    <button class="tab" onclick="m26tab('schedule',this)">Match Schedule</button>
-    <button class="tab" onclick="m26tab('venues',this)">Venues</button>
-  </div>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy-900);
+            color: #e2e8f0;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .font-display { font-family: 'Oswald', sans-serif; }
 
-  <!-- PROGRAM -->
-  <div id="m26-program">
-    <div class="day-tabs" id="m26-pdaytabs">
-      <button class="day-btn" onclick="m26pday(0,this)">Fri May 22</button>
-      <button class="day-btn" onclick="m26pday(1,this)">Sat May 23</button>
-      <button class="day-btn" onclick="m26pday(2,this)">Sun May 24</button>
-    </div>
-    <div id="m26-nextbar" style="display:none" class="next-bar">
-      <i class="ti ti-clock" aria-hidden="true"></i>
-      <span id="m26-nextbar-txt"></span>
-    </div>
-    <div class="legend">
-      <div class="leg"><div class="leg-dot" style="background:#4a90d9"></div>Prayer</div>
-      <div class="leg"><div class="leg-dot" style="background:#5daa72"></div>Meals</div>
-      <div class="leg"><div class="leg-dot" style="background:#8b1a1a"></div>Sports</div>
-      <div class="leg"><div class="leg-dot" style="background:#e8a020"></div>Program/Events</div>
-      <div class="leg"><div class="leg-dot" style="background:#888"></div>Social</div>
-    </div>
-    <div id="m26-progbody" class="timeline"></div>
-  </div>
+        .match-card {
+            background: var(--navy-700);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .match-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.08), 0 4px 16px rgba(0,0,0,0.4);
+        }
+        .card-header {
+            background: var(--navy-600);
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .team-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            gap: 10px;
+            min-height: 48px;
+        }
+        .team-row.winner { background: var(--gold-muted); }
+        .team-row.winner .team-name { color: var(--gold); font-weight: 700; }
+        .team-row.loser .team-name { color: #6b7280; }
+        .team-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            min-width: 0;
+            flex-shrink: 1;
+        }
+        .dot-winner { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+        .dot-loser { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #4b5563; flex-shrink: 0; }
 
-  <!-- SCHEDULE -->
-  <div id="m26-schedule" style="display:none">
-    <div class="refresh-bar">
-      <span class="refresh-dot" id="m26-rdot"></span>
-      <span id="m26-refresh-txt">Loading scores...</span>
-    </div>
-    <div class="day-tabs">
-      <button class="day-btn active" onclick="m26sday('Saturday',this)">Sat May 23</button>
-      <button class="day-btn" onclick="m26sday('Sunday',this)">Sun May 24</button>
-    </div>
-    <div class="sport-filter">
-      <button class="sport-btn active" onclick="m26sport('All',this)">All Sports</button>
-      <button class="sport-btn" onclick="m26sport('Basketball',this)">🏀 Basketball</button>
-      <button class="sport-btn" onclick="m26sport('Soccer',this)">⚽ Soccer</button>
-      <button class="sport-btn" onclick="m26sport('Volleyball',this)">🏐 Volleyball</button>
-    </div>
-    <div id="m26-schedbody"><div class="loading">Loading schedule from Google Sheets...</div></div>
-  </div>
+        .score-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 8px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            min-width: 32px;
+            flex-shrink: 0;
+        }
+        .score-win { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.25); }
+        .score-loss { background: rgba(251, 146, 60, 0.12); color: #fb923c; border: 1px solid rgba(251, 146, 60, 0.2); }
 
-  <!-- VENUES -->
-  <div id="m26-venues" style="display:none">
-    <div id="m26-venuesbody"></div>
-  </div>
-</div>
+        .result-line {
+            text-align: center;
+            padding: 10px 16px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-top: 1px solid rgba(255, 215, 0, 0.07);
+            margin-top: auto;
+        }
+        .scores-wrap { display: flex; gap: 4px; flex-wrap: nowrap; margin-left: auto; flex-shrink: 0; }
 
-<script type="text/javascript">
-var SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRA5NpvmVUORtp79-12wdq6-x7Ixc_lZScENN81n60VD402B19XjfjOE8MEQopFhpEDqB5amUyW5kPi/pub?gid=1263866120&single=true&output=csv";
-var REFRESH_INTERVAL = 60000; // 60 seconds
+        .section-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 28px;
+            border: 2px solid var(--gold);
+            border-radius: 999px;
+            background: rgba(255, 215, 0, 0.06);
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .pool-badge {
+            background: var(--gold);
+            color: var(--navy-900);
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 999px;
+            flex-shrink: 0;
+        }
 
-var DATES = ['2026-05-22','2026-05-23','2026-05-24'];
-var IC = {prayer:'ti-building-mosque',food:'ti-tools-kitchen-2',sports:'ti-ball-basketball',program:'ti-speakerphone',logistics:'ti-bus',social:'ti-campfire'};
+        .semifinal-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,215,0,0.02));
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+        .semifinal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.15), 0 8px 32px rgba(0,0,0,0.4);
+        }
 
-var PD = [
-  [{t:'5:00 am',s:300,d:30,title:'Fajr Salat & Dars',cat:'prayer'},{t:'8:30 am',s:510,d:90,title:'Breakfast',cat:'food'},{t:'1:00 pm',s:780,d:90,title:'Jummah Prayers',cat:'prayer',loc:'Mubarak Mosque'},{t:'2:30 pm',s:870,d:60,title:'Lunch',cat:'food'},{t:'3:30 pm',s:930,d:240,title:'Off-Site Activity',cat:'social',loc:'Washington DC'},{t:'7:30 pm',s:1170,d:60,title:'Dinner',cat:'food'},{t:'8:30 pm',s:1230,d:15,title:'Maghrib Salat',cat:'prayer'},{t:'8:45 pm',s:1245,d:45,title:'Bonfire',cat:'social'},{t:'9:30 pm',s:1290,d:30,title:'Isha Salat',cat:'prayer'},{t:'10:30 pm',s:1350,d:0,title:'Lights Out',cat:'logistics'}],
-  [{t:'5:00 am',s:300,d:30,title:'Salat ul Fajr & Dars',cat:'prayer'},{t:'8:00 am',s:480,d:60,title:'Breakfast & Registration',cat:'food',loc:'Patriot HS'},{t:'9:00 am',s:540,d:60,title:'Opening Session',cat:'program',loc:'Patriot HS',hl:'orange'},{t:'10:00 am',s:600,d:165,title:'Sports - Block 1',cat:'sports',loc:'PHS Gym + Field',hl:'blue'},{t:'11:00 am',s:660,d:180,title:'Running Lunch',cat:'food',loc:'PHS Cafeteria'},{t:'2:45 pm',s:885,d:30,title:'Zuhr & Asr Salat',cat:'prayer',loc:'Patriot HS'},{t:'3:15 pm',s:915,d:225,title:'Sports - Block 2',cat:'sports',loc:'PHS Gym + Field',hl:'blue'},{t:'7:00 pm',s:1140,d:90,title:'Dinner',cat:'food',loc:'Mubarak Mosque'},{t:'8:30 pm',s:1230,d:15,title:'Maghrib & Isha Salat',cat:'prayer',loc:'Mubarak Mosque'},{t:'8:45 pm',s:1245,d:75,title:'Khilafat Day Program',cat:'program',loc:'Mubarak Mosque',hl:'orange'},{t:'10:00 pm',s:1320,d:60,title:'Bonfire / Cafe',cat:'social',loc:'Mubarak Mosque'}],
-  [{t:'5:00 am',s:300,d:30,title:'Fajr Salat & Dars',cat:'prayer'},{t:'7:00 am',s:420,d:60,title:'Breakfast',cat:'food',loc:'Patriot HS'},{t:'8:00 am',s:480,d:180,title:'Sports - Block 3',cat:'sports',loc:'Patriot HS',hl:'blue'},{t:'11:00 am',s:660,d:195,title:'Running Lunch',cat:'food',loc:'PHS Cafeteria'},{t:'2:15 pm',s:855,d:45,title:'Zuhr & Asr Salat',cat:'prayer',loc:'Patriot HS'},{t:'3:00 pm',s:900,d:180,title:'Finals Sports Block',cat:'sports',loc:'Patriot HS',hl:'red'},{t:'6:00 pm',s:1080,d:40,title:'Rolling Dinner',cat:'food',loc:'Patriot HS'},{t:'6:40 pm',s:1120,d:185,title:'Closing Session',cat:'program',loc:'Patriot HS',hl:'orange'},{t:'9:45 pm',s:1305,d:30,title:'Maghrib & Isha Salat',cat:'prayer'}]
-];
+        .glow-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+            width: 120px;
+            border-radius: 2px;
+        }
+        .advance-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #4ade80;
+            padding: 3px 10px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 999px;
+            margin-top: 4px;
+        }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+        .volleyball-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 16px;
+            border-radius: 999px;
+            background: rgba(255, 215, 0, 0.10);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .round-divider { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 8px 0; }
+        .round-divider .line { height: 1px; width: 48px; background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3)); }
+        .round-divider .line:last-child { background: linear-gradient(90deg, rgba(255,215,0,0.3), transparent); }
 
-var VD = [
-  {name:'Mubarak Mosque',addr:'4555 Ahmadiyya Dr, Chantilly, VA 20151',use:'Accommodation, meals, prayers, Khilafat Day, bonfire',icon:'ti-building-mosque',maps:'https://maps.google.com/?q=4555+Ahmadiyya+Dr+Chantilly+VA'},
-  {name:'Patriot High School',addr:'10504 Kettle Run Rd, Nokesville, VA',use:'All sports (Basketball + Soccer), opening & closing sessions',icon:'ti-ball-basketball',maps:'https://maps.google.com/?q=10504+Kettle+Run+Rd+Nokesville+VA'},
-  {name:'Rocky Run Middle School',addr:'4700 Stringfellow Rd, Chantilly, VA',use:'Volleyball courts',icon:'ti-ball-volleyball',maps:'https://maps.google.com/?q=4700+Stringfellow+Rd+Chantilly+VA'},
-  {name:'Masroor Mosque',addr:'5640 Hoadly Rd, Manassas, VA',use:'Additional venue',icon:'ti-building-mosque',maps:'https://maps.google.com/?q=5640+Hoadly+Rd+Manassas+VA'}
-];
+        .playin-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 640px) { .playin-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .playin-grid { grid-template-columns: repeat(3, 1fr); } }
 
-var pDay=0, schedDay='Saturday', schedSport='All', pManual=false;
-var allGames=[];
+        .knockout-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 56rem; margin: 0 auto; }
+        @media (min-width: 640px) { .knockout-grid { grid-template-columns: repeat(2, 1fr); } }
 
-function pad(n){return String(n).padStart(2,'0');}
-function fmtTime(d){var h=d.getHours(),m=d.getMinutes(),ap=h>=12?'PM':'AM';h=h%12||12;return h+':'+pad(m)+' '+ap;}
-function todayIdx(){var n=new Date(),str=n.getFullYear()+'-'+pad(n.getMonth()+1)+'-'+pad(n.getDate());return DATES.indexOf(str);}
-function nowMin(){var n=new Date();return n.getHours()*60+n.getMinutes();}
-function durLbl(d){if(!d||d>=1440)return'';return d>=60?(Math.floor(d/60)+'h'+(d%60?' '+d%60+'m':'')):(d+'m');}
+        .qf-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 64rem; margin: 0 auto; }
+        @media (min-width: 640px) { .qf-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .qf-grid { grid-template-columns: repeat(3, 1fr); } }
 
-function updateClock(){
-  var n=new Date();
-  var c=document.getElementById('m26-clock'),dy=document.getElementById('m26-day');
-  if(c)c.textContent=fmtTime(n);
-  if(dy)dy.textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
-}
+        .sf-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 64rem; margin: 0 auto; }
+        @media (min-width: 480px) { .sf-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .sf-grid { grid-template-columns: repeat(4, 1fr); } }
+    </style>
+</head>
+<body class="min-h-screen">
 
-window.m26tab=function(tab,el){
-  document.querySelectorAll('#mist26 .tab').forEach(function(t){t.classList.remove('active');});
-  el.classList.add('active');
-  document.getElementById('m26-program').style.display=tab==='program'?'':'none';
-  document.getElementById('m26-schedule').style.display=tab==='schedule'?'':'none';
-  document.getElementById('m26-venues').style.display=tab==='venues'?'':'none';
-  if(tab==='venues')renderV();
-  if(tab==='schedule'&&allGames.length===0)fetchSheet();
-};
+    <!-- HEADER -->
+    <header class="pt-10 pb-6 md:pt-16 md:pb-10 text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-center mb-5">
+                <span class="volleyball-badge">🏐 Volleyball Tournament</span>
+            </div>
+            <h1 class="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight" style="color: var(--gold);">
+                VOLLEYBALL TOURNAMENT BRACKET
+            </h1>
+            <p class="mt-3 text-xs sm:text-sm md:text-base text-gray-400 tracking-widest uppercase">
+                Official Results · Play-In → Knockouts → Quarterfinals → Semifinals
+            </p>
+            <div class="glow-line mt-6"></div>
+        </div>
+    </header>
 
-window.m26pday=function(d,el){
-  pDay=d;pManual=true;
-  document.querySelectorAll('#m26-pdaytabs .day-btn').forEach(function(b){b.classList.remove('active');});
-  el.classList.add('active');
-  renderP();
-};
+    <!-- LEGEND -->
+    <section class="max-w-3xl mx-auto px-4 mb-10">
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs md:text-sm">
+            <div class="flex items-center gap-2">
+                <span class="legend-dot" style="background:var(--gold);"></span>
+                <span class="text-gray-300">Winner</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="legend-dot" style="border: 2px solid #6b7280;"></span>
+                <span class="text-gray-300">Eliminated</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="score-pill score-win" style="font-size:11px;">15</span>
+                <span class="text-gray-300">Set Win</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="score-pill score-loss" style="font-size:11px;">8</span>
+                <span class="text-gray-300">Set Loss</span>
+            </div>
+        </div>
+    </section>
 
-window.m26sday=function(day,el){
-  schedDay=day;
-  el.closest('.day-tabs').querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
-  el.classList.add('active');
-  renderS();
-};
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 pb-16 space-y-14">
 
-window.m26sport=function(sport,el){
-  schedSport=sport;
-  document.querySelectorAll('#mist26 .sport-btn').forEach(function(b){b.classList.remove('active');});
-  el.classList.add('active');
-  renderS();
-};
+        <!-- SECTION 1: PLAY-IN ROUND -->
+        <section>
+            <div class="text-center mb-8">
+                <span class="section-pill">⚡ Play-In Round — Pool Stage</span>
+            </div>
+            <div class="playin-grid">
 
-/* ── FETCH FROM GOOGLE SHEETS ── */
-function fetchSheet(){
-  var dot=document.getElementById('m26-rdot');
-  var txt=document.getElementById('m26-refresh-txt');
-  if(dot)dot.classList.add('syncing');
-  if(txt)txt.textContent='Syncing scores...';
+                <!-- Pool 1 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 1</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Jamia</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Muqami</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">3</span><span class="score-pill score-loss">8</span></div>
+                    </div>
+                    <div class="result-line">Jamia wins 2–0</div>
+                </div>
 
-  fetch(SHEET_CSV+'&t='+Date.now())
-    .then(function(r){return r.text();})
-    .then(function(csv){
-      allGames=parseCSV(csv);
-      renderS();
-      if(dot)dot.classList.remove('syncing');
-      var now=new Date();
-      if(txt)txt.textContent='Updated '+fmtTime(now);
-    })
-    .catch(function(){
-      if(dot)dot.classList.remove('syncing');
-      if(txt)txt.textContent='Could not load - check connection';
-    });
-}
+                <!-- Pool 2 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 2</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Canada</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">East C</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">2</span><span class="score-pill score-loss">5</span></div>
+                    </div>
+                    <div class="result-line">Canada wins 2–0</div>
+                </div>
 
-function parseCSV(csv){
-  var lines=csv.split('\n');
-  var headers=lines[0].split(',').map(function(h){return h.trim().replace(/"/g,'');});
-  var rows=[];
-  for(var i=1;i<lines.length;i++){
-    if(!lines[i].trim())continue;
-    var vals=lines[i].split(',').map(function(v){return v.trim().replace(/"/g,'');});
-    var obj={};
-    headers.forEach(function(h,idx){obj[h]=vals[idx]||'';});
-    rows.push(obj);
-  }
-  return rows;
-}
+                <!-- Pool 3 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 3</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Virginia</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">17</span><span class="score-pill score-loss">10</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Richmond</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">15</span><span class="score-pill score-win">15</span><span class="score-pill score-loss">11</span></div>
+                    </div>
+                    <div class="result-line">Virginia wins 2–1</div>
+                </div>
 
-/* ── RENDER SCHEDULE ── */
-function renderS(){
-  var body=document.getElementById('m26-schedbody');
-  if(!body)return;
-  if(!allGames.length){body.innerHTML='<div class="loading">Loading schedule...</div>';return;}
+                <!-- Pool 4 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 4</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Ansar Canada</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">East B</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">4</span><span class="score-pill score-loss">7</span></div>
+                    </div>
+                    <div class="result-line">Ansar Canada wins 2–0</div>
+                </div>
 
-  var filtered=allGames.filter(function(g){
-    var dayMatch=g.day===schedDay;
-    var sportMatch=schedSport==='All'||g.sport===schedSport;
-    return dayMatch&&sportMatch;
-  });
+                <!-- Pool 5 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 5</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">SVA 1</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">11</span><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Ansar Canada</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-loss">12</span><span class="score-pill score-loss">11</span></div>
+                    </div>
+                    <div class="result-line">SVA 1 wins 2–1</div>
+                </div>
 
-  if(!filtered.length){body.innerHTML='<div class="loading">No matches found</div>';return;}
+                <!-- Pool 6 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 6</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Baltimore A</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-loss">11</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Virginia C</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">9</span><span class="score-pill score-win">15</span><span class="score-pill score-loss">6</span></div>
+                    </div>
+                    <div class="result-line">Baltimore A wins 2–1</div>
+                </div>
 
-  /* group by sport then court */
-  var groups={};
-  filtered.forEach(function(g){
-    var key=g.sport+' - '+g.court;
-    if(!groups[key])groups[key]={sport:g.sport,court:g.court,games:[]};
-    groups[key].games.push(g);
-  });
+                <!-- Pool 7 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 7</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Canada</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Ansar USA</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">7</span><span class="score-pill score-loss">6</span></div>
+                    </div>
+                    <div class="result-line">Canada wins 2–0</div>
+                </div>
 
-  var sportIcon={Basketball:'🏀',Soccer:'⚽',Volleyball:'🏐'};
-  var liveCount=filtered.filter(function(g){return g.status==='live';}).length;
+                <!-- Pool 8 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 8</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">SVA 1</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-loss">12</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">East B</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">5</span><span class="score-pill score-win">15</span><span class="score-pill score-loss">13</span></div>
+                    </div>
+                    <div class="result-line">SVA 1 wins 2–1</div>
+                </div>
 
-  var html='';
-  if(liveCount>0){
-    html+='<div style="font-size:12px;color:#a32d2d;background:#fcebeb;border-radius:8px;padding:8px 12px;margin-bottom:12px;display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#e24b4a;display:inline-block;animation:mist-pulse 1.5s infinite"></span>'+liveCount+' game'+(liveCount>1?'s':'')+' live right now</div>';
-  }
+                <!-- Pool 9 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 9</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">East A</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Richmond</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">12</span><span class="score-pill score-loss">8</span></div>
+                    </div>
+                    <div class="result-line">East A wins 2–0</div>
+                </div>
 
-  Object.keys(groups).sort().forEach(function(key){
-    var g=groups[key];
-    html+='<div class="court-group"><div class="court-label">'+sportIcon[g.sport]+' '+g.sport+' &mdash; '+g.court+'</div>';
-    g.games.forEach(function(m){
-      var hasScore=m.score_a!==''&&m.score_b!=='';
-      var status=m.status||'upcoming';
-      var scoreHTML=hasScore
-        ?'<div class="vs-score">'+m.score_a+' <span class="vs-dash">-</span> '+m.score_b+'</div>'
-        :'<div class="vs-dash" style="font-size:18px">vs</div>';
-      var badgeCls=status==='live'?'s-live':status==='done'?'s-done':'s-up';
-      var badgeTxt=status==='live'?'● LIVE':status==='done'?'Final':m.time;
-      html+='<div class="match-card '+status+'">'
-        +'<div class="match-time">'+m.time+'</div>'
-        +'<div><div class="t-name">'+m.team_a+'</div></div>'
-        +'<div class="vs-c">'+scoreHTML+'<span class="sbadge '+badgeCls+'">'+badgeTxt+'</span></div>'
-        +'<div class="t-right"><div class="t-name">'+m.team_b+'</div></div>'
-      +'</div>';
-    });
-    html+='</div>';
-  });
-  body.innerHTML=html;
-}
+                <!-- Pool 10 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 10</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Ansar USA</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">16</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">East C</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">2</span><span class="score-pill score-loss">8</span><span class="score-pill score-loss">13</span></div>
+                    </div>
+                    <div class="result-line">Ansar USA wins 3–0</div>
+                </div>
 
-/* ── RENDER PROGRAM ── */
-function renderP(){
-  var rows=PD[pDay]||[];
-  var ti=todayIdx(),isToday=(pDay===ti),nm=nowMin();
-  var curIdx=-1,nxtIdx=-1;
-  if(isToday){
-    for(var i=0;i<rows.length;i++){if(rows[i].d>0&&nm>=rows[i].s&&nm<rows[i].s+rows[i].d){curIdx=i;break;}}
-    if(curIdx===-1){for(var j=0;j<rows.length;j++){if(rows[j].s>nm){nxtIdx=j;break;}}}
-  }
-  var bar=document.getElementById('m26-nextbar'),btxt=document.getElementById('m26-nextbar-txt');
-  if(isToday&&curIdx!==-1&&curIdx+1<rows.length){bar.style.display='flex';btxt.textContent='Up next: '+rows[curIdx+1].title+' at '+rows[curIdx+1].t;}
-  else if(isToday&&nxtIdx!==-1){bar.style.display='flex';btxt.textContent='Up next: '+rows[nxtIdx].title+' at '+rows[nxtIdx].t;}
-  else{bar.style.display='none';}
+                <!-- Pool 11 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 11</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Jamia</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">9</span><span class="score-pill score-win">19</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Virginia B</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-loss">17</span><span class="score-pill score-loss">12</span></div>
+                    </div>
+                    <div class="result-line">Jamia wins 2–1</div>
+                </div>
 
-  var html=rows.map(function(r,i){
-    var past=isToday&&r.d>0&&nm>=r.s+r.d;
-    var curr=i===curIdx;
-    var rc='tl-row'+(past?' past':'')+(curr?' current':'');
-    var nb=curr?'<div class="now-pill"><span class="now-dot"></span>Happening now</div>':'';
-    var tc='tl-title'+(r.hl==='orange'?' hl-orange':r.hl==='blue'?' hl-blue':r.hl==='red'?' hl-red':'');
-    var sub=r.loc?'<div class="tl-sub"><i class="ti ti-map-pin" style="font-size:10px;margin-right:2px" aria-hidden="true"></i>'+r.loc+'</div>':'';
-    return '<div class="'+rc+'"><div class="tl-time">'+r.t+'</div><div class="tl-dot '+r.cat+'"><i class="ti '+IC[r.cat]+'" aria-hidden="true"></i></div><div class="tl-body">'+nb+'<div class="'+tc+'">'+r.title+'</div>'+sub+'</div></div>';
-  }).join('');
-  var body=document.getElementById('m26-progbody');
-  if(body)body.innerHTML=html;
-  setTimeout(function(){var c=document.querySelector('#mist26 .tl-row.current');if(c)c.scrollIntoView({behavior:'smooth',block:'center'});},120);
-}
+                <!-- Pool 12 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Play-In</span>
+                        <span class="pool-badge">Pool 12</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">NVA</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Muqami</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">4</span><span class="score-pill score-loss">11</span></div>
+                    </div>
+                    <div class="result-line">NVA wins 2–0</div>
+                </div>
 
-/* ── RENDER VENUES ── */
-function renderV(){
-  var body=document.getElementById('m26-venuesbody');
-  if(!body)return;
-  body.innerHTML=VD.map(function(v){
-    return '<div class="venue-card"><div class="venue-icon"><i class="ti '+v.icon+'" aria-hidden="true"></i></div><div><div class="venue-name">'+v.name+'</div><div class="venue-addr">'+v.addr+'</div><div class="venue-addr" style="margin-bottom:6px;color:#aaa">'+v.use+'</div>'+(v.maps?'<a href="'+v.maps+'" target="_blank" rel="noopener" class="venue-dir"><i class="ti ti-map" style="font-size:12px" aria-hidden="true"></i> Get directions</a>':'')+'</div></div>';
-  }).join('');
-}
+            </div>
+        </section>
 
-/* ── INIT ── */
-function initDayTabs(){
-  var ti=todayIdx();
-  var btns=document.querySelectorAll('#m26-pdaytabs .day-btn');
-  btns.forEach(function(b,i){if(i===ti)b.classList.add('today');});
-  var start=ti>=0?ti:0;
-  if(!pManual){pDay=start;btns.forEach(function(b){b.classList.remove('active');});if(btns[start])btns[start].classList.add('active');}
-  else{if(btns[0])btns[0].classList.add('active');}
-}
+        <!-- Divider -->
+        <div class="round-divider">
+            <div class="line"></div>
+            <span style="color:rgba(255,215,0,0.4); font-size:18px;">⌄⌄</span>
+            <div class="line"></div>
+        </div>
 
-function tick(){updateClock();renderP();}
+        <!-- SECTION 2: KNOCKOUT ROUND -->
+        <section>
+            <div class="text-center mb-8">
+                <span class="section-pill">⚔️ Knockout Round</span>
+            </div>
+            <div class="knockout-grid">
 
-function m26Start(){
-  if(window._m26done)return;
-  window._m26done=true;
-  initDayTabs();
-  tick();
-  setInterval(tick,60000);
-  fetchSheet();
-  setInterval(fetchSheet,REFRESH_INTERVAL);
-}
+                <!-- K1 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Knockout</span>
+                        <span class="pool-badge">K1</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Ansar USA</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Muqami</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">13</span><span class="score-pill score-loss">10</span></div>
+                    </div>
+                    <div class="result-line">Ansar USA wins 2–0</div>
+                </div>
 
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',m26Start);}
-else{m26Start();}
-</script>
+                <!-- K2 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Knockout</span>
+                        <span class="pool-badge">K2</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">East B</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">18</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">SVA 2</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">8</span><span class="score-pill score-loss">16</span></div>
+                    </div>
+                    <div class="result-line">East B wins 2–0<div class="mt-1"><span class="advance-tag">→ Advances to Quarterfinal</span></div></div>
+                </div>
+
+                <!-- K3 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Knockout</span>
+                        <span class="pool-badge">K3</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">NVA</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">East C</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">12</span></div>
+                    </div>
+                    <div class="result-line">NVA wins</div>
+                </div>
+
+                <!-- K4 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Knockout</span>
+                        <span class="pool-badge">K4</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Walker</span>
+                        <div class="scores-wrap"></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Ansar</span>
+                        <div class="scores-wrap"></div>
+                    </div>
+                    <div class="result-line">Walker wins<div class="mt-1"><span class="advance-tag">→ Advances to Quarterfinal</span></div></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="round-divider">
+            <div class="line"></div>
+            <span style="color:rgba(255,215,0,0.4); font-size:18px;">⌄⌄</span>
+            <div class="line"></div>
+        </div>
+
+        <!-- SECTION 3: QUARTERFINALS -->
+        <section>
+            <div class="text-center mb-8">
+                <span class="section-pill">🏆 Quarterfinals</span>
+            </div>
+            <div class="qf-grid">
+
+                <!-- QF1 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Quarterfinal</span>
+                        <span class="pool-badge">QF1</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Jamia</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Ansar USA</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">8</span><span class="score-pill score-loss">12</span></div>
+                    </div>
+                    <div class="result-line">Jamia wins 2–0<div class="mt-1"><span class="advance-tag">→ Semifinal</span></div></div>
+                </div>
+
+                <!-- QF2 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Quarterfinal</span>
+                        <span class="pool-badge">QF2</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">SVA 1</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">East B</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">7</span><span class="score-pill score-loss">7</span></div>
+                    </div>
+                    <div class="result-line">SVA 1 wins 2–0<div class="mt-1"><span class="advance-tag">→ Semifinal</span></div></div>
+                </div>
+
+                <!-- QF3 -->
+                <div class="match-card">
+                    <div class="card-header">
+                        <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Quarterfinal</span>
+                        <span class="pool-badge">QF3</span>
+                    </div>
+                    <div class="team-row winner">
+                        <span class="dot-winner"></span>
+                        <span class="team-name text-sm font-semibold">Ansar Canada</span>
+                        <div class="scores-wrap"><span class="score-pill score-win">15</span><span class="score-pill score-loss">9</span><span class="score-pill score-win">15</span></div>
+                    </div>
+                    <div class="team-row loser">
+                        <span class="dot-loser"></span>
+                        <span class="team-name text-sm">Baltimore A</span>
+                        <div class="scores-wrap"><span class="score-pill score-loss">7</span><span class="score-pill score-win">15</span><span class="score-pill score-loss">7</span></div>
+                    </div>
+                    <div class="result-line">Ansar Canada wins 2–1<div class="mt-1"><span class="advance-tag">→ Semifinal</span></div></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="round-divider">
+            <div class="line"></div>
+            <span style="color:rgba(255,215,0,0.4); font-size:18px;">⌄⌄</span>
+            <div class="line"></div>
+        </div>
+
+        <!-- SECTION 4: SEMIFINALISTS -->
+        <section>
+            <div class="text-center mb-8">
+                <span class="section-pill">🏐 Semifinalists</span>
+            </div>
+            <div class="sf-grid">
+
+                <div class="semifinal-card">
+                    <div style="font-size:2rem; margin-bottom:12px;">🥇</div>
+                    <h3 class="font-display text-xl md:text-2xl font-bold tracking-wide" style="color:var(--gold);">JAMIA</h3>
+                    <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest">via QF1</p>
+                    <div class="glow-line mt-4"></div>
+                </div>
+
+                <div class="semifinal-card">
+                    <div style="font-size:2rem; margin-bottom:12px;">🥇</div>
+                    <h3 class="font-display text-xl md:text-2xl font-bold tracking-wide" style="color:var(--gold);">SVA 1</h3>
+                    <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest">via QF2</p>
+                    <div class="glow-line mt-4"></div>
+                </div>
+
+                <div class="semifinal-card">
+                    <div style="font-size:2rem; margin-bottom:12px;">🥇</div>
+                    <h3 class="font-display text-xl md:text-2xl font-bold tracking-wide" style="color:var(--gold);">ANSAR CANADA</h3>
+                    <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest">via QF3</p>
+                    <div class="glow-line mt-4"></div>
+                </div>
+
+                <div class="semifinal-card">
+                    <div style="font-size:2rem; margin-bottom:12px;">🥇</div>
+                    <h3 class="font-display text-xl md:text-2xl font-bold tracking-wide" style="color:var(--gold);">CANADA</h3>
+                    <p class="text-xs text-gray-400 mt-2 uppercase tracking-widest">via QF4</p>
+                    <div class="glow-line mt-4"></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8" style="border-top: 1px solid rgba(255,215,0,0.1);">
+        <p class="text-xs text-gray-500 tracking-wider uppercase">🏐 Volleyball Bracket · All Results Official</p>
+    </footer>
+
+    <script>
+        if (window.lucide) lucide.createIcons();
+    </script>
+</body>
+</html>
